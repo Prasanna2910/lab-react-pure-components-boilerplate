@@ -1,4 +1,3 @@
-import React from 'react';
 import { PureComponent } from 'react';
 
 class Pure extends PureComponent {
@@ -6,31 +5,30 @@ class Pure extends PureComponent {
     super();
     this.state = {
       count: 0,
-      toggle: false,
+      condition: false,
     };
   }
-  handleClick = () => {
-    if (this.state.toggle == true) {
+
+  handleCounter = () => {
+    if (this.state.condition === true)
       this.setState({ ...this.state, count: this.state.count + 1 });
-    }
   };
+
   handleToggle = () => {
-    this.setState({ ...this.state, toggle: !this.state.toggle });
+    this.setState({ ...this.state, condition: !this.state.condition });
   };
+
   render() {
+    console.log('Pure Component');
     return (
       <div>
-        <h2>{this.state.count}</h2>
-        <button
-          onClick={() => {
-            this.handleClick();
-          }}
-        >
-          Add
-        </button>
-        <button onClick={this.handleToggle}>Toggle</button>
+        <h1>Pure Component</h1>
+        <p>{this.state.count}</p>
+        <button onClick={this.handleToggle}>Set Toggle</button>
+        <button onClick={this.handleCounter}>Counter</button>
       </div>
     );
   }
 }
+
 export default Pure;
